@@ -1,0 +1,43 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'VT323', monospace;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 45px;
+    background: #fdfdfd;
+    text-align: right;
+    border-bottom: solid 0.5px #a9a9a9;
+}
+
+
+a {
+    text-decoration: none;
+    color: #0e0e0e;
+    display: inline-block;
+}
+
+nav > ul > li {
+    display: inline-block;
+    padding: 10px 25px;
+}
+main {
+    height: 3000px;
+    width: 90%;
+    margin: 55px auto;
+}
+
+header {
+    height:500px;
+    margin: 0px auto;
+    background-image: url("./../img/walandscape.png");
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: 50% 90%;
+}
