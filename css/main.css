@@ -30,6 +30,7 @@ main {
     height: 3000px;
     width: 90%;
     margin: 55px auto;
+    background-color: green;
 }
 
 header {
