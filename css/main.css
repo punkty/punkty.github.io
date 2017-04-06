@@ -13,6 +13,7 @@ nav {
     background: #fdfdfd;
     text-align: right;
     border-bottom: solid 0.5px #a9a9a9;
+    z-index: 2;
 }
 
 
@@ -34,13 +35,22 @@ main {
 }
 
 header {
-    height:500px;
-    margin: 0px auto;
+    height: 900px;
     background-image: url("./../img/walandscape.png");
       background-repeat: no-repeat;
       background-attachment: fixed;
       background-size: cover;
       background-position: 50% 90%;
+    
+}
+header > img {
+    position: absolute;
+    width: 80%;
+    margin: -30% 0 0 -40%;
+    left: 50%;
+    z-index: 1;
+    top: 50%;
+    
 }
 
 article {
@@ -54,8 +64,6 @@ article {
  height: 200px;
  float: left;
  margin: 0 25px;
- background: red;
- border: solid black 2px;
  vertical-align: top;
 }
 .shopkeep {
