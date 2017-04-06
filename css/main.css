@@ -50,18 +50,18 @@ article {
 }
 
 .project {
- width: 250px;
+ width: 200px;
  height: 200px;
- margin: 0px auto;
+ float: left;
+ margin: 0 25px;
  background: red;
  border: solid black 2px;
- display: inline-block;
  vertical-align: top;
 }
 .shopkeep {
     background: purple;
-    width: 200px;
-    height: 100%;
+    width: 300px;
+    height: 400px;
     display: inline-block;
-    margin: 0px auto;
+    float: right;
 }
