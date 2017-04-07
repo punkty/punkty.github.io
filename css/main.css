@@ -31,7 +31,7 @@ main {
     height: 3000px;
     width: 90%;
     margin: 55px auto;
-    background-color: green;
+    /*background-color: green;*/
 }
 
 header {
@@ -56,7 +56,7 @@ header > img {
 article {
     width: 100%;
     height: 400px;
-    background: blue;
+    /*background: blue;*/
 }
 
 .project {
@@ -67,7 +67,7 @@ article {
  vertical-align: top;
 }
 .shopkeep {
-    background: purple;
+    /*background: purple;*/
     width: 300px;
     height: 400px;
     display: inline-block;
