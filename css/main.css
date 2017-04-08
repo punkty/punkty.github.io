@@ -2,6 +2,7 @@
     margin: 0px;
     padding: 0px;
     font-family: 'VT323', monospace;
+    color: #0e0e0e;
 }
 
 nav {
@@ -9,13 +10,21 @@ nav {
     top: 0;
     left: 0;
     width: 100%;
-    height: 45px;
+    height: 35px;
     background: #fdfdfd;
+    border-bottom: #d1d1d1 solid 1px;
     text-align: right;
-    border-bottom: solid 0.5px #a9a9a9;
     z-index: 2;
 }
-
+nav:after {
+    content: '';
+    background: rgba(0,0,0,.35);
+    border-radius: 50%;
+    position:relative;
+    filter: blur(5px);
+    height: 2em;
+    width: 100%;
+}
 
 a {
     text-decoration: none;
@@ -25,7 +34,7 @@ a {
 
 nav > ul > li {
     display: inline-block;
-    padding: 10px 25px;
+    padding: 10px 25px 25px 0px;
 }
 main {
     height: 3000px;
@@ -64,7 +73,74 @@ article {
  height: 200px;
  float: left;
  margin: 0 25px;
- vertical-align: top;
+ vertical-align: bottom;
+}
+.project > a {
+    position: relative;
+    left: 50%;
+
+}
+.shelf {
+    border-bottom: 70px solid #c97e5f;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    z-index: -1;
+    position: relative;
+    top: 110px;
+}
+.shelf:after {
+    content: '';
+    background: #91402f;
+    height: 20px;
+    width: calc(100% + 40px);
+    position: absolute;
+    top: 70px;
+    left: 0px;
+    right: 0px;
+    z-index: 1;
+    margin: 0 -20px;
+
+
+}
+.snailFantasy:after {
+    content: '';
+    display: block;
+    width: 200px;
+    height: 1em;
+    background: rgba(0,0,0,.35);
+    border-radius: 50%;
+    position: relative;
+    filter: blur(5px);
+}
+.hoardAPI:after {
+    content: '';
+    display: block;
+    width: 200px;
+    height: 1em;
+    background: rgba(0,0,0,.35);
+    border-radius: 50%;
+    position: relative;
+    filter: blur(5px);
+    
+}
+.foodPlusPlus:after {
+    content: '';
+    display: block;
+    width: 90px;
+    height: 1em;
+    background: rgba(0,0,0,.35);
+    border-radius: 50%;
+    position: relative;
+    filter: blur(5px);
+    
+}
+
+
+.projectLink {
+    /*display: block;
+    -webkit-box-shadow: 0 6px 4px -4px black;
+    -moz-box-shadow: 0 6px 4px -4px black;
+    box-shadow: 0 6px 4px -4px black;*/
 }
 .shopkeep {
     /*background: purple;*/
