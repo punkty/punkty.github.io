@@ -60,6 +60,7 @@ body {
   vertical-align: bottom;
   width: 100vw;
   min-height: 100vh;
+  background-image: url("../img/galaxybg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -70,6 +71,7 @@ body {
 }
 
 .content {
+  background: rgba(14,26,37,.75);
   z-index: 1;
   text-align: center;
   color:#FFF;

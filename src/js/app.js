@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
   particlesJS('particles-js', {
-    "particles": {
+  "particles": {
     "number": {
       "value": 38,
       "density": {
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "nb_sides": 5
       },
       "image": {
-        "src": "img/github.svg",
+        "src": "img/galaxybg.jpg",
         "width": 100,
         "height": 100
       }
@@ -41,13 +41,13 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     },
     "size": {
-      "value": 8.017060304327615,
+      "value": 0,
       "random": true,
       "anim": {
         "enable": false,
-        "speed": 77.95941238092914,
+        "speed": 2,
         "size_min": 0.1,
-        "sync": true
+        "sync": false
       }
     },
     "line_linked": {
