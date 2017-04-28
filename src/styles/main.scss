@@ -1,6 +1,9 @@
 $main: #0e1a25;
 $sec: #4B5664;
 $purple: #54516A;
+$blue: #01a4ef;
+$green: #34a853;
+$yellow: #fbbc05;
 $cut: 768px;
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
@@ -8,6 +11,15 @@ $cut: 768px;
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
+}
+.blue {
+  color: $blue;
+}
+.green {
+  color: $green;
+}
+.yellow {
+  color: $yellow;
 }
 
 @-webkit-keyframes pulse {
@@ -55,7 +67,6 @@ body {
 }
 
 #particles-js {
-  background: $main;
   display: block;
   vertical-align: bottom;
   width: 100vw;
@@ -64,6 +75,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  background-position: 50% 50%;
   .particles-js-canvas-el {
     width:100vw !important;
     height:100vh !important;
@@ -71,7 +83,7 @@ body {
 }
 
 .content {
-  background: rgba(14,26,37,.75);
+  background: rgba(14,26,37,.8);
   z-index: 1;
   text-align: center;
   color:#FFF;
@@ -79,6 +91,7 @@ body {
   top: 50%;
   left: 50%;
   margin: 0 auto;
+  padding: 20px;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   .site-title {
@@ -189,7 +202,7 @@ body {
 
 .user-details {
   text-align: center;
-  font-size: 16px;
+  font-size: 18px;
   margin: 10px auto;
 }
 
@@ -272,4 +285,66 @@ body {
       color: $sec;
     }
   }
+}
+
+/*
+  blog container
+*/
+
+.blogContainer {
+  margin-left: auto;
+  margin-right: auto;
+  width: 615px;
+}
+
+@media (max-width: 1366px) {
+  .blogContainer {
+    width: 45vw;
+  }
+}
+
+
+@media (max-width: 48em) {
+  .blogContainer {
+    width: 75vw;
+  }
+}
+/*
+  Post
+*/
+.post-container {
+  margin-bottom: 4rem;
+}
+
+.posts {
+  margin-bottom: 5rem;
+  padding: 0px;
+  list-style: none;
+}
+
+.post-date {
+  display: block;
+  margin-bottom: 1rem;
+  color: #9a9a9a;
+  font-family: 'Quattrocento Sans', sans-serif;
+  font-size:0.8rem;
+}
+
+@media (max-width: 30rem) {
+  .posts h1 {
+    font-size: 1.5rem;
+  }
+}
+
+.related {
+  padding-bottom: 2rem;
+}
+
+.related-posts {
+  padding-left: 0px;
+  list-style: none;
+}
+
+.related-posts a {
+  text-decoration: none;
 }
