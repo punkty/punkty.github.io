@@ -1,22 +1,33 @@
 ---
 layout: page
-title: Developer Blog
+title: Gaming Blog
 ---
-<ul class="posts">
+<article class="posts">
 {% for post in site.categories.gamingBlog %}
 {% unless post.next %}
-  <h3>{{ post.date | date: '%Y' }}</h3>
+  <!--<h3>{{ post.date | date: '%Y' }}</h3>-->
 {% else %}
   {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
   {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
   {% if year != nyear %}
-    <h3>{{ post.date | date: '%Y' }}</h3>
+    <!--<h3>{{ post.date | date: '%Y' }}</h3>-->
   {% endif %}
 {% endunless %}
-
-<li itemscope>
+  <h4>
+    <a href="{{ site.github.url }}{{ post.url }}">{{ post.title }}</a>
+  </h4>
+  {% if post.image.teaser %}
+    <a href="{{ site.github.url }}{{ post.url }}"><img class="teaserImage" src="{{ site.github.url }}assets/img/gamingImages/{{ post.image.teaser }}"></a>
+  {% endif %}
+  <p>
+    {{ post.content | strip_html | truncate: 350 }} <a href="{{ site.github.url }}{{ post.url }}">Read more</a>
+    <span class="post-date" style="margin-top:3px"><i class="fa fa-calendar" aria-hidden="true"></i> {{ post.date | date_to_string }} - <i class="fa fa-clock-o" aria-hidden="true"></i> {% include read-time.html %}</span>
+  </p>
+<!--<p itemscope>
   <a href="{{ site.github.url }}{{ post.url }}">{{ post.title }}</a>
   <p class="post-date"><span><i class="fa fa-calendar" aria-hidden="true"></i> {{ post.date | date: "%B %-d" }} - <i class="fa fa-clock-o" aria-hidden="true"></i> {% include read-time.html %}</span></p>
-</li>
+</p>-->
 {% endfor %}
-</ul>
+</article>
+
+

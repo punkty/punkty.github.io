@@ -294,19 +294,26 @@ body {
 .blogContainer {
   margin-left: auto;
   margin-right: auto;
-  width: 615px;
+  width: 900px;
 }
-
+.teaserImage {
+  height: 150px;
+  width: 100%;
+}
+.mainPostImage {
+  width: 100%;
+  height: 200px;
+}
 @media (max-width: 1366px) {
   .blogContainer {
-    width: 45vw;
+    width: 75vw;
   }
 }
 
 
 @media (max-width: 48em) {
   .blogContainer {
-    width: 75vw;
+    width: 85vw;
   }
 }
 /*
