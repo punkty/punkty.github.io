@@ -1,7 +1,10 @@
 ---
 layout: page
-title: Gaming Blog
+title: Ty Warren | Gaming Blog
+background: gamingBackground
+container: blogContainer-Gaming
 ---
+
 <article class="posts">
 {% for post in site.categories.gamingBlog %}
 {% unless post.next %}
@@ -13,12 +16,13 @@ title: Gaming Blog
     <!--<h3>{{ post.date | date: '%Y' }}</h3>-->
   {% endif %}
 {% endunless %}
-  <h4>
-    <a href="{{ site.github.url }}{{ post.url }}">{{ post.title }}</a>
-  </h4>
+
   {% if post.image.teaser %}
     <a href="{{ site.github.url }}{{ post.url }}"><img class="teaserImage" src="{{ site.github.url }}assets/img/gamingImages/{{ post.image.teaser }}"></a>
   {% endif %}
+  <h5>
+    <a href="{{ site.github.url }}{{ post.url }}">{{ post.title }}</a>
+  </h5>
   <p>
     {{ post.content | strip_html | truncate: 350 }} <a href="{{ site.github.url }}{{ post.url }}">Read more</a>
     <span class="post-date" style="margin-top:3px"><i class="fa fa-calendar" aria-hidden="true"></i> {{ post.date | date_to_string }} - <i class="fa fa-clock-o" aria-hidden="true"></i> {% include read-time.html %}</span>
@@ -29,5 +33,6 @@ title: Gaming Blog
 </p>-->
 {% endfor %}
 </article>
+
 
 

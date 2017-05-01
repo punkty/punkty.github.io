@@ -2,11 +2,13 @@
 <html lang="en">
   {% include head.html %}
 <body>
-  <article class="blogContainer">
+  <main class="{{ page.background }}">
+  <article class="{{ page.container }}">
   {% include blogHeader.html %}
   <h1>
-    {{ page.title }}
+    {{ page.title }} {{page.id}}
   </h1>
   {{ content }}
   </article>
+  </main>
 </body>
