@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>JS 30 Day 1</title>
+  <meta name="description" content="First day of JS30!">
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.rawgit.com/konpa/devicon/master/devicon.min.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+
+<body>
+    <article class="blogContainer-Dev">
+        
+<a class="link" href="http://punkty.github.io" data-scroll>Home</a>
+<a class="link" href="/devBlog.html">Developer Blog</a>
+<a class="link" href="/gamingBlog.html">Gaming Blog</a>
+        <img class="mainPostImage" src="/assets/img/devImages/day1Teaser.png">
+        <h1>JS 30 Day 1</h1>
+        <article class="post-container">
+    <h4>Introduction:</h4>
+    <section class="intro">
+        <p>
+            First ever blog post here. I am still learning the ropes with jekyll. This first set of posts will be going through the javascript30 course. Javascript 30 is a free course provided by Wes Bos. You can check that out <a href="https://javascript30.com/">here</a>.My hope is to retoactively supply links for these deployed assignments. I am looking into setting that up soon. Apart from that I will be posting my throughts and process for going through these assignments as I learn more about Javascript.
+        </p>
+    <h4>The Task:</h4>
+        <p>
+            The task is to create visual keys on the screen that will display a sound name and the appropriate keyboard key that, when pressed, will trigger the sound. As an added bonus these should be clickable as well.
+        </p>
+    <h4>Thoughts:</h4>
+        <p>
+            Trying to accomplish the buttons to be clickable threw me for a loop while following allong with the video. I had to step back and break down what was actually happening before I figured a solution out for it. I ended up grabbing onto innerHTML and throwing it through a switch statement that felt really hacky. The other thing that bothered me but was definitely self inflicted was when I held down a key or if I clicked as fast as I could --  I would end up breaking the button and the "playing" class would stay and never get removed. I resolved this by changing around the removeTransform function into just a transform function and then applying a time delay to remove the applied class once it was set.
+        </p>
+        <p>
+            All in all I really felt like I hacked my way through this one and I'm still considering trying to refactor it. Either way, until I get these deployed here is a link to the source code for <a href="http://github.com/punkty/javascript30/">day1</a>.
+        </p>
+    </section>
+    
+</article>
+
+        <span class="post-date">
+        Written on
+        
+        May
+        3rd
+        ,
+        2017
+        by Ty Warren
+        </span>
+    </article>
+</body>
