@@ -1,0 +1,78 @@
+---
+layout: post
+title: JS 30 Day 2
+categories: ["js30","javascript"]
+container: blogContainer-Dev
+image:
+  feature: day2.gif
+  teaser: day2.gif
+---
+<article class="post-container">
+    <section class="intro">
+        <h5><a href="#">Live Demo</a></h5>
+        <p>
+            Day 2! Going strong. This one was fun and pretty straight forward to get up and running. I hope this does NOT become a running theme but again there were somethings that bothered me when I pushed for functionality. I tried my best to figure out a way to resolve the issues, in the end I was satisfied by finding an alternative approach.
+        </p>
+    <h4>The Task:</h4>
+        <p>
+            Day 2 was all about making a ticking clock. 1 Circle clock face, 3 hands, mix well and bake in the javascript oven for 10 minutes. 
+        </p>
+    <h4>Thoughts:</h4>
+        <p>
+            Tricky things that happened in this episode (and was mentioned by Wes Bos in the video) was the second hand transition. When it approaches 12 to roll over and start again it sorta spasms out. I tried to remove the class and set a setTimeout in order to try and remedy this but it was still not performing the intended result. I finally found a site that had a different tutorial about making this with more so going on in the CSS department than javascript. Definitely worth checking out: <a href="https://cssanimation.rocks/clocks/">CSSanimations.rocks</a> This used something new to me called a Keyframe and set up really nicely some fluid animations for all 3 hands. If I were to do this all again in a pinch I would probably use the cssAnimations.rocks method. CSS always suprises me of how much it is actually capable of handling.
+        </p>
+        <p>
+            Some other features I added was a ticking sound if you click anywhere in the window. Which can be turned off with an additional click. I added some numbers to the clock face that I am not too crazy about. I was going to figure out how to add some points to the end of each hadn to give it an arrow or something. If I come back to this project I will probably do that. I did change all of the hand's dimenions to be more readable. I guess I should also mention that all of the background images I am using are from a lovely site called <a href="#">unsplash.com</a>. Great free to use HD photos. Anyway, here is the javascript portion of the assignemnt.
+        </p>
+        {% highlight javascript %}
+        'use_strict';
+
+        const secHand = document.querySelector('.secHand');
+        const minHand = document.querySelector('.minHand');
+        const hourHand = document.querySelector('.hourHand');
+        const tick = new Audio('resources/sounds/tick.wav');
+        let soundOn = false;
+
+        function soundToggle(){
+            if(soundOn){
+                soundOn = false;
+            } else {
+                soundOn = true;
+            }
+        }
+
+        function playTick(){
+            tick.currentTime = 0;
+            tick.play()
+        }
+        function toDegrees(time){
+            return((time / 60) * 360 + 90)
+        }
+
+        function calcHours(hours){
+            return ((hours / 12) * 360 + 90);
+        }
+
+
+        function setDate(){
+            const now = new Date;
+            const seconds = now.getSeconds();
+            const minutes = now.getMinutes();
+            const hours = now.getHours();
+            secHand.style.transform = `rotate(${toDegrees(seconds)}deg)`;
+            minHand.style.transform = `rotate(${toDegrees(minutes)}deg)`;
+            hourHand.style.transform = `rotate(${calcHours(hours)}deg)`;
+            if(soundOn){
+                playTick()
+            }
+        }
+
+        setInterval(setDate, 1000);
+        window.addEventListener('click', soundToggle);
+        {% endhighlight %}        
+        <p>
+            Finishing this one felt a lot better than day 1 in terms of not so hacky solution. It was a fun project and I am looking forward to the next one. Here is the source to what I am rambling on about. <a href="http://github.com/punkty/javascript30/">day 2</a>.
+        </p>
+    </section>
+    
+</article>

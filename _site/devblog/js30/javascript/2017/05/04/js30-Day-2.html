@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>JS 30 Day 2</title>
+  <meta name="description" content="A blog about programming and gaming">
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.rawgit.com/konpa/devicon/master/devicon.min.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+
+<body>
+    <article class="blogContainer-Dev">
+        
+<a class="link" href="http://punkty.github.io" data-scroll>Home</a>
+<a class="link" href="/devBlog.html">Developer Blog</a>
+<a class="link" href="/gamingBlog.html">Gaming Blog</a>
+        <img class="mainPostImage" src="/assets/img/devImages/day2.gif">
+        <h1>JS 30 Day 2</h1>
+        <article class="post-container">
+    <section class="intro">
+        <h5><a href="#">Live Demo</a></h5>
+        <p>
+            Day 2! Going strong. This one was fun and pretty straight forward to get up and running. I hope this does NOT become a running theme but again there were somethings that bothered me when I pushed for functionality. I tried my best to figure out a way to resolve the issues, in the end I was satisfied by finding an alternative approach.
+        </p>
+    <h4>The Task:</h4>
+        <p>
+            Day 2 was all about making a ticking clock. 1 Circle clock face, 3 hands, mix well and bake in the javascript oven for 10 minutes. 
+        </p>
+    <h4>Thoughts:</h4>
+        <p>
+            Tricky things that happened in this episode (and was mentioned by Wes Bos in the video) was the second hand transition. When it approaches 12 to roll over and start again it sorta spasms out. I tried to remove the class and set a setTimeout in order to try and remedy this but it was still not performing the intended result. I finally found a site that had a different tutorial about making this with more so going on in the CSS department than javascript. Definitely worth checking out: <a href="https://cssanimation.rocks/clocks/">CSSanimations.rocks</a> This used something new to me called a Keyframe and set up really nicely some fluid animations for all 3 hands. If I were to do this all again in a pinch I would probably use the cssAnimations.rocks method. CSS always suprises me of how much it is actually capable of handling.
+        </p>
+        <p>
+            Some other features I added was a ticking sound if you click anywhere in the window. Which can be turned off with an additional click. I added some numbers to the clock face that I am not too crazy about. I was going to figure out how to add some points to the end of each hadn to give it an arrow or something. If I come back to this project I will probably do that. I did change all of the hand's dimenions to be more readable. I guess I should also mention that all of the background images I am using are from a lovely site called <a href="#">unsplash.com</a>. Great free to use HD photos. Anyway, here is the javascript portion of the assignemnt.
+        </p>
+        <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">        <span class="s1">'use_strict'</span><span class="p">;</span>
+
+        <span class="kr">const</span> <span class="nx">secHand</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'.secHand'</span><span class="p">);</span>
+        <span class="kr">const</span> <span class="nx">minHand</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'.minHand'</span><span class="p">);</span>
+        <span class="kr">const</span> <span class="nx">hourHand</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'.hourHand'</span><span class="p">);</span>
+        <span class="kr">const</span> <span class="nx">tick</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Audio</span><span class="p">(</span><span class="s1">'resources/sounds/tick.wav'</span><span class="p">);</span>
+        <span class="kd">let</span> <span class="nx">soundOn</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+        <span class="kd">function</span> <span class="nx">soundToggle</span><span class="p">(){</span>
+            <span class="k">if</span><span class="p">(</span><span class="nx">soundOn</span><span class="p">){</span>
+                <span class="nx">soundOn</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">soundOn</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="kd">function</span> <span class="nx">playTick</span><span class="p">(){</span>
+            <span class="nx">tick</span><span class="p">.</span><span class="nx">currentTime</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="nx">tick</span><span class="p">.</span><span class="nx">play</span><span class="p">()</span>
+        <span class="p">}</span>
+        <span class="kd">function</span> <span class="nx">toDegrees</span><span class="p">(</span><span class="nx">time</span><span class="p">){</span>
+            <span class="k">return</span><span class="p">((</span><span class="nx">time</span> <span class="o">/</span> <span class="mi">60</span><span class="p">)</span> <span class="o">*</span> <span class="mi">360</span> <span class="o">+</span> <span class="mi">90</span><span class="p">)</span>
+        <span class="p">}</span>
+
+        <span class="kd">function</span> <span class="nx">calcHours</span><span class="p">(</span><span class="nx">hours</span><span class="p">){</span>
+            <span class="k">return</span> <span class="p">((</span><span class="nx">hours</span> <span class="o">/</span> <span class="mi">12</span><span class="p">)</span> <span class="o">*</span> <span class="mi">360</span> <span class="o">+</span> <span class="mi">90</span><span class="p">);</span>
+        <span class="p">}</span>
+
+
+        <span class="kd">function</span> <span class="nx">setDate</span><span class="p">(){</span>
+            <span class="kr">const</span> <span class="nx">now</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">;</span>
+            <span class="kr">const</span> <span class="nx">seconds</span> <span class="o">=</span> <span class="nx">now</span><span class="p">.</span><span class="nx">getSeconds</span><span class="p">();</span>
+            <span class="kr">const</span> <span class="nx">minutes</span> <span class="o">=</span> <span class="nx">now</span><span class="p">.</span><span class="nx">getMinutes</span><span class="p">();</span>
+            <span class="kr">const</span> <span class="nx">hours</span> <span class="o">=</span> <span class="nx">now</span><span class="p">.</span><span class="nx">getHours</span><span class="p">();</span>
+            <span class="nx">secHand</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">transform</span> <span class="o">=</span> <span class="err">`</span><span class="nx">rotate</span><span class="p">(</span><span class="nx">$</span><span class="p">{</span><span class="nx">toDegrees</span><span class="p">(</span><span class="nx">seconds</span><span class="p">)}</span><span class="nx">deg</span><span class="p">)</span><span class="err">`</span><span class="p">;</span>
+            <span class="nx">minHand</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">transform</span> <span class="o">=</span> <span class="err">`</span><span class="nx">rotate</span><span class="p">(</span><span class="nx">$</span><span class="p">{</span><span class="nx">toDegrees</span><span class="p">(</span><span class="nx">minutes</span><span class="p">)}</span><span class="nx">deg</span><span class="p">)</span><span class="err">`</span><span class="p">;</span>
+            <span class="nx">hourHand</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">transform</span> <span class="o">=</span> <span class="err">`</span><span class="nx">rotate</span><span class="p">(</span><span class="nx">$</span><span class="p">{</span><span class="nx">calcHours</span><span class="p">(</span><span class="nx">hours</span><span class="p">)}</span><span class="nx">deg</span><span class="p">)</span><span class="err">`</span><span class="p">;</span>
+            <span class="k">if</span><span class="p">(</span><span class="nx">soundOn</span><span class="p">){</span>
+                <span class="nx">playTick</span><span class="p">()</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="nx">setInterval</span><span class="p">(</span><span class="nx">setDate</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+        <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="nx">soundToggle</span><span class="p">);</span>
+        </code></pre></figure>        
+        <p>
+            Finishing this one felt a lot better than day 1 in terms of not so hacky solution. It was a fun project and I am looking forward to the next one. Here is the source to what I am rambling on about. <a href="http://github.com/punkty/javascript30/">day 2</a>.
+        </p>
+    </section>
+    
+</article>
+        <span class="post-date">
+        Written on
+        
+        May
+        4th,
+        2017
+        by Ty Warren
+        </span>
+    </article>
+</body>

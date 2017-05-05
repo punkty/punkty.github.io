@@ -312,7 +312,7 @@ main.devBackground {
   max-width: 900px;
   padding: 20px;
   background:rgba(254,254,254,.8);
-  height: 100vh;
+  height: 100%;
 }
 .blogContainer-Dev {
   margin-left: auto;
@@ -320,7 +320,7 @@ main.devBackground {
   max-width: 900px;
   padding: 20px;
   background: rgba(223,235,249,.8);
-  height: 100vh;
+  height: 100%;
 }
 .teaserImage {
   height: 150px;
@@ -346,6 +346,7 @@ main.devBackground {
 */
 .post-container {
   margin-bottom: 4rem;
+
 }
 
 .posts {
