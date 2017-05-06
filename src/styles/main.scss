@@ -340,11 +340,9 @@ main.devBackground {
 .mainPostImage {
   width: 100%;
 }
-pre {
-  overflow-x: auto;
-}
 code {
   text-align:left;
+  overflow-x: auto;
 
 }
 @media (max-width: 1366px) {
