@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>JS 30 Day 2</title>
-  <meta name="description" content="A blog about programming and gaming">
+  <meta name="description" content="A portfolio site and personal blog">
 
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -19,7 +19,7 @@
         
 <a class="link" href="http://punkty.github.io" data-scroll>Home</a>
 <a class="link" href="/devBlog.html">Developer Blog</a>
-<a class="link" href="/gamingBlog.html">Gaming Blog</a>
+<!--<a class="link" href="/gamingBlog.html">Gaming Blog</a>-->
         <img class="mainPostImage" src="/assets/img/devImages/day2.gif">
         <h1>JS 30 Day 2</h1>
         <article class="post-container">
@@ -39,53 +39,54 @@
         <p>
             Some other features I added was a ticking sound if you click anywhere in the window. Which can be turned off with an additional click. I added some numbers to the clock face that I am not too crazy about. I was going to figure out how to add some points to the end of each hadn to give it an arrow or something. If I come back to this project I will probably do that. I did change all of the hand's dimenions to be more readable. I guess I should also mention that all of the background images I am using are from a lovely site called <a href="#">unsplash.com</a>. Great free to use HD photos. Anyway, here is the javascript portion of the assignemnt.
         </p>
-        <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">        <span class="s1">'use_strict'</span><span class="p">;</span>
+        <pre><code>
+        'use_strict';
 
-        <span class="kr">const</span> <span class="nx">secHand</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'.secHand'</span><span class="p">);</span>
-        <span class="kr">const</span> <span class="nx">minHand</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'.minHand'</span><span class="p">);</span>
-        <span class="kr">const</span> <span class="nx">hourHand</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'.hourHand'</span><span class="p">);</span>
-        <span class="kr">const</span> <span class="nx">tick</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Audio</span><span class="p">(</span><span class="s1">'resources/sounds/tick.wav'</span><span class="p">);</span>
-        <span class="kd">let</span> <span class="nx">soundOn</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+        const secHand = document.querySelector('.secHand');
+        const minHand = document.querySelector('.minHand');
+        const hourHand = document.querySelector('.hourHand');
+        const tick = new Audio('resources/sounds/tick.wav');
+        let soundOn = false;
 
-        <span class="kd">function</span> <span class="nx">soundToggle</span><span class="p">(){</span>
-            <span class="k">if</span><span class="p">(</span><span class="nx">soundOn</span><span class="p">){</span>
-                <span class="nx">soundOn</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="nx">soundOn</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
+        function soundToggle(){
+            if(soundOn){
+                soundOn = false;
+            } else {
+                soundOn = true;
+            }
+        }
 
-        <span class="kd">function</span> <span class="nx">playTick</span><span class="p">(){</span>
-            <span class="nx">tick</span><span class="p">.</span><span class="nx">currentTime</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-            <span class="nx">tick</span><span class="p">.</span><span class="nx">play</span><span class="p">()</span>
-        <span class="p">}</span>
-        <span class="kd">function</span> <span class="nx">toDegrees</span><span class="p">(</span><span class="nx">time</span><span class="p">){</span>
-            <span class="k">return</span><span class="p">((</span><span class="nx">time</span> <span class="o">/</span> <span class="mi">60</span><span class="p">)</span> <span class="o">*</span> <span class="mi">360</span> <span class="o">+</span> <span class="mi">90</span><span class="p">)</span>
-        <span class="p">}</span>
+        function playTick(){
+            tick.currentTime = 0;
+            tick.play()
+        }
+        function toDegrees(time){
+            return((time / 60) * 360 + 90)
+        }
 
-        <span class="kd">function</span> <span class="nx">calcHours</span><span class="p">(</span><span class="nx">hours</span><span class="p">){</span>
-            <span class="k">return</span> <span class="p">((</span><span class="nx">hours</span> <span class="o">/</span> <span class="mi">12</span><span class="p">)</span> <span class="o">*</span> <span class="mi">360</span> <span class="o">+</span> <span class="mi">90</span><span class="p">);</span>
-        <span class="p">}</span>
+        function calcHours(hours){
+            return ((hours / 12) * 360 + 90);
+        }
 
 
-        <span class="kd">function</span> <span class="nx">setDate</span><span class="p">(){</span>
-            <span class="kr">const</span> <span class="nx">now</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">;</span>
-            <span class="kr">const</span> <span class="nx">seconds</span> <span class="o">=</span> <span class="nx">now</span><span class="p">.</span><span class="nx">getSeconds</span><span class="p">();</span>
-            <span class="kr">const</span> <span class="nx">minutes</span> <span class="o">=</span> <span class="nx">now</span><span class="p">.</span><span class="nx">getMinutes</span><span class="p">();</span>
-            <span class="kr">const</span> <span class="nx">hours</span> <span class="o">=</span> <span class="nx">now</span><span class="p">.</span><span class="nx">getHours</span><span class="p">();</span>
-            <span class="nx">secHand</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">transform</span> <span class="o">=</span> <span class="err">`</span><span class="nx">rotate</span><span class="p">(</span><span class="nx">$</span><span class="p">{</span><span class="nx">toDegrees</span><span class="p">(</span><span class="nx">seconds</span><span class="p">)}</span><span class="nx">deg</span><span class="p">)</span><span class="err">`</span><span class="p">;</span>
-            <span class="nx">minHand</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">transform</span> <span class="o">=</span> <span class="err">`</span><span class="nx">rotate</span><span class="p">(</span><span class="nx">$</span><span class="p">{</span><span class="nx">toDegrees</span><span class="p">(</span><span class="nx">minutes</span><span class="p">)}</span><span class="nx">deg</span><span class="p">)</span><span class="err">`</span><span class="p">;</span>
-            <span class="nx">hourHand</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">transform</span> <span class="o">=</span> <span class="err">`</span><span class="nx">rotate</span><span class="p">(</span><span class="nx">$</span><span class="p">{</span><span class="nx">calcHours</span><span class="p">(</span><span class="nx">hours</span><span class="p">)}</span><span class="nx">deg</span><span class="p">)</span><span class="err">`</span><span class="p">;</span>
-            <span class="k">if</span><span class="p">(</span><span class="nx">soundOn</span><span class="p">){</span>
-                <span class="nx">playTick</span><span class="p">()</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
+        function setDate(){
+            const now = new Date;
+            const seconds = now.getSeconds();
+            const minutes = now.getMinutes();
+            const hours = now.getHours();
+            secHand.style.transform = `rotate(${toDegrees(seconds)}deg)`;
+            minHand.style.transform = `rotate(${toDegrees(minutes)}deg)`;
+            hourHand.style.transform = `rotate(${calcHours(hours)}deg)`;
+            if(soundOn){
+                playTick()
+            }
+        }
 
-        <span class="nx">setInterval</span><span class="p">(</span><span class="nx">setDate</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
-        <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="nx">soundToggle</span><span class="p">);</span>
-        </code></pre></figure>        
+        setInterval(setDate, 1000);
+        window.addEventListener('click', soundToggle);
+        </code></pre>
         <p>
-            Finishing this one felt a lot better than day 1 in terms of not so hacky solution. It was a fun project and I am looking forward to the next one. Here is the source to what I am rambling on about. <a href="http://github.com/punkty/javascript30/">day 2</a>.
+            Finishing this one felt a lot better than day 1 in terms of a not so hacky solution. It was a fun project and I am looking forward to the next one. Here is the source to what I am rambling on about. <a href="http://github.com/punkty/javascript30/">day 2</a>.
         </p>
     </section>
     

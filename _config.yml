@@ -1,6 +1,6 @@
 # Site settings
 title: Ty Warren
-description: A blog about programming and gaming
+description: A portfolio site and personal blog
 # baseurl: "/particle" # the subpath of your site, e.g. /blog
 url: "http://punkty.github.io" # the base hostname & protocol for your site e.g. http://willianjusten.com.br
 

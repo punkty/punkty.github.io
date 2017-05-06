@@ -1,0 +1,63 @@
+---
+layout: post
+title: JS 30 Day 3
+categories: ["js30","javascript", "css"]
+container: blogContainer-Dev
+image:
+  feature: day3.gif
+  teaser: day3.gif
+---
+<article class="post-container">
+    <section class="intro">
+        <h5><a href="#">Live Demo</a></h5>
+        <p>
+            Very straight forward project for Day 3. If there was a pausing point in this episode I missed it. I was able to keep up with Wes today and code along. I did not run into any issues except for some minor spelling mistakes which were quickly dealt with. I learned a lot of fun new things in this episode so lets get to it!
+        </p>
+    <h4>The Task:</h4>
+        <p>
+            Today we made a couple of slider inputs which are of type "range". I was unaware of this input type. The main focus was to pair these inputs up with built in CSS variables. With a little help from javascript we create an interface that will manipulate our image that has the CSS variables attached to it.
+        </p>
+    <h4>Thoughts:</h4>
+        <p>
+            CSS is so cool! I have heard of variables in Sass and Less which compile back into CSS at the end of the day but I did not know about CSS variables. We used :root which as described per <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:root">MDN</a> says that the pseudo class :root is identical to the html selector excpet that its specificity is higher. MDN goes on to say that this is a good way to set global CSS variables. (which is what we used it for.) In the bottom example I set a variable frog to a hexidecimal value of green.
+        </p>
+            <pre>
+                <code>
+                :root { 
+                    --frog: #34a853; 
+                }
+                </code>
+            </pre>
+        <p>
+            To use the defined variable the syntax is as follows:
+        </p>
+        <pre>
+            <code>
+                div {
+                    background: var(--frog);
+                }
+            </code>
+        </pre>
+
+        <p>
+             I also learned from this project that document.querySelectorAll does not return an array. It returns a node list. The difference being that a node list does not have all the great methods of an array. The last big take away for me was this.dataset. Dataset comes in handy using data- attributes on an HTML element. You can add multiple attributes this way to store information on a particular tag. Then the magic behind dataset is that it will return each one of those attributes in a tidy object to pull out of in javascript. This was a great learning exercise and I am eager to apply some of these new tools to future coding solutions. I will definitely keep CSS variables, and dataset in my toolbelt for future projects. Below is the javascript used for this project.
+        </p>
+        {% highlight javascript %}
+        'use strict';
+
+        const inputs = document.querySelectorAll(".controls input");
+
+        function handleUpdate(){
+            const suffix = this.dataset.sizing || '';
+            document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix)
+        }
+
+        inputs.forEach(input => input.addEventListener('change', handleUpdate));
+        inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
+        {% endhighlight %}        
+        <p>
+            As always, here is the source for <a href="http://github.com/punkty/javascript30/">day 3</a>.
+        </p>
+    </section>
+    
+</article>
