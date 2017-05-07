@@ -2,6 +2,7 @@
 <html lang="en">
   {% include head.html %}
 <body>
+    <main class="{{ page.background }}">
     <article class="{{page.container}}">
         {% include blogHeader.html %}
         <img class="mainPostImage" src="{{ site.github.url }}/assets/img/devImages/{{ page.image.teaser }}">
@@ -20,4 +21,5 @@
         by {{ site.username }}
         </span>
     </article>
+    </main>
 </body>

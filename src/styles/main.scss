@@ -326,7 +326,7 @@ main.devBackground {
   height: 100%;
   overflow: hidden;
   text-align: center;
-  h5,p {
+  h4,h5,p, span {
     margin-left: 10px;
     text-align: left;
   }
@@ -379,7 +379,10 @@ code {
   font-family: 'Quattrocento Sans', sans-serif;
   font-size:0.8rem;
 }
-
+.devPostBG {
+  background-image: url("../img/octocat.png");
+  background-size: cover;
+}
 @media (max-width: 30rem) {
   .posts h1 {
     font-size: 1.5rem;
