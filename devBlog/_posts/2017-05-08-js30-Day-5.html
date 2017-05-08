@@ -1,0 +1,55 @@
+---
+layout: post
+title: JS 30 Day 5
+categories: ["js30","javascript"]
+container: blogContainer-Dev
+background: devPostBG
+image:
+  feature: day5.gif
+  teaser: day5.gif
+---
+<article class="post-container">
+    <section class="intro">
+        <h5><a href="#">Live Demo</a></h5>
+        <p>
+            
+        </p>
+    <h4>The Task:</h4>
+        <p>
+            Flex Panels with CSS Variables and JS. Most of this project I would say was Flex panels... which all was an entirely new concept to me. Once all the Flex was set up, all that was left was adding javascript event listeners.
+        </p>
+    <h4>Thoughts:</h4>
+        <p>
+            Key take aways for me on this assignment (Apart from how aswesome flex is with CSS and I need spend more time with it) would have to be .toggle method on classList. Which also has a handy method of .contains so you can check whats on there and run conditionals on. I set it up this way first and had it add and remove based on what was returned by the .contains method. However this can all be handled with the single .toggle method which will apply a class or remove it. (Pretty self explainatory by its name).
+        </p>
+        <p>
+           The javascript for this one is pretty short. I added on a feature out of personal preference to only allow one panel to be opened at a time. Other than that, javascript is feeling better. I am feeling a lot more comfortable with grabbing classes and elements out of the DOM and applying event listeners, grabbing onto classes etc. I am starting to feel less comfortable with how well I know CSS now!
+        </p>
+        <p>
+            The only main concern I had with this assignment was the ease of the transitions. After talking it over with another developer, we realized that since I used such large images for the backgrounds it was actually creating a performance issue. (at least while running on my machine). If the screen height is small it wont be as noticable as setting the browser window to a full screen size of a monitor. I left all the dog images in for now.. again, courtesy of <a href="https://unsplash.com/">unsplash.com</a>
+        </p>
+        <pre>
+            <code>
+'use strict';
+
+const panels = document.querySelectorAll(".panel");
+
+function togglePanel(){
+   this.classList.toggle('open');
+}
+function toggleActive(e){
+    if(e.propertyName.includes('flex')){
+        this.classList.toggle('open-active');
+    }
+}
+
+panels.forEach(panel => panel.addEventListener("click",togglePanel));
+panels.forEach(panel => panel.addEventListener("transitionend",toggleActive));
+            </code>
+        </pre>
+        <p>
+            Short and sweet post. Here is the source for a deeper look <a href="http://github.com/punkty/javascript30/tree/master/day5">day 5</a>.
+        </p>
+    </section>
+    
+</article>
