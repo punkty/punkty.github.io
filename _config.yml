@@ -2,7 +2,7 @@
 title: Ty Warren
 description: A portfolio site and personal blog
 # baseurl: "/particle" # the subpath of your site, e.g. /blog
-url: "http://iamtylerwarren.com" # the base hostname & protocol for your site e.g. http://willianjusten.com.br
+url: "http://dev.iamtylerwarren.com" # the base hostname & protocol for your site e.g. http://willianjusten.com.br
 
 # User settings
 username: Ty Warren
