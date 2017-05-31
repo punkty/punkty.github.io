@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>JS 30 Day 6</title>
+  <meta name="description" content="A portfolio site and personal blog">
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.rawgit.com/konpa/devicon/master/devicon.min.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+
+<body>
+    <main class="devPostBG">
+    <article class="blogContainer-Dev">
+        
+<a class="link" href="/" data-scroll>Home</a>
+<a class="link" href="/devBlog.html">Developer Blog</a>
+<!--<a class="link" href="/gamingBlog.html">Gaming Blog</a>-->
+        <img class="mainPostImage" src="/assets/img/devImages/day6.gif">
+        <h1>JS 30 Day 6</h1>
+        <article class="post-container">
+    <section class="intro">
+        <h5><a href="#">Live Demo</a></h5>
+        <p>
+            
+        </p>
+    <h4>The Task:</h4>
+        <p>
+            Make a input field with a "type ahead" feature. When typing into the field it will match and filter into a subset of the entire JSON.
+        </p>
+    <h4>Thoughts:</h4>
+        <p>
+            Using fetch() is awesome! Which is supported by all browsers according to MDN except for Internet Explorer. But there is apparently a polyfill to make it work on the unsupported browsers. <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">Using Fetch</a> Below is the use of fetch() used in this project.
+        </p>
+        <pre>
+            <code>
+const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+// fetch the URL which will return a blob
+// The blob could be any kind of data type
+// Since we know its json we use the built in method
+// We then need another promise and we have the raw data
+// we call push onto our array we made and use the ES6 spread to 
+// insert each city into its own index in our array
+fetch(endpoint).then(blob => blob.json().then(data => cities.push(...data)))
+            </code>
+        </pre>
+        <p>
+            One thing I did notice, if a capital is typed, it will change where ever that letter occurs to be capital. For example, if a capital "R" is typed. it will show up as New YoRk in the results. I believe this would require the regex and replace methods to be refactored a bit. Below is the whole javascript file.
+        </p>
+        <pre>
+            <code>
+'use strict';
+
+const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+
+const cities = [];
+// fetch the URL which will return a blob
+// The blob could be any kind of data type
+// Since we know its json we use the built in method
+// We then need another promise and we have the raw data
+// we call push onto our array we made and use the ES6 spread to 
+// insert each city into its own index in our array
+fetch(endpoint).then(blob => blob.json().then(data => cities.push(...data)))
+
+function findMatch(wordToMatch, cities){
+    return cities.filter(place=> {
+
+    const regex = new RegExp(wordToMatch,'gi');
+    return place.city.match(regex) || place.state.match(regex);
+    });
+}
+
+function numberWithCommas(x){
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g,',');
+}
+
+function displayMatches(){
+    const matchArray = findMatch(this.value, cities);
+    const html = matchArray.map(place => {
+        const regex = new RegExp(this.value, 'gi');
+        const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
+        const stateName = place.state.replace(regex, `<span class="hl">${this.value}</span>`);
+        return `
+            <li>
+                <span class="name">${cityName}, ${stateName}</span>
+                <span class="population"> ${numberWithCommas(place.population)}</span>
+            </li>
+        `;
+    }).join('');
+    suggestions.innerHTML = html;
+}
+
+const searchInput = document.querySelector('.search');
+const suggestions = document.querySelector('.suggestions');
+
+searchInput.addEventListener('change', displayMatches);
+searchInput.addEventListener('keyup', displayMatches);
+            </code>
+        </pre>
+        <p>
+            Here is the source for <a href="http://github.com/punkty/javascript30/tree/master/day6">day 6</a>.
+        </p>
+    </section>
+    
+</article>
+        <span class="post-date">
+        Written on
+        
+        May
+        30th,
+        2017
+        by Ty Warren
+        </span>
+    </article>
+    </main>
+</body>
