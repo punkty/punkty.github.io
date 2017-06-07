@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-  {% include head.html %}
+    <link rel="stylesheet" href="{{ "/assets/css/main.css" | prepend: site.baseurl }}">
+    <link href="{{ '/assets/prism/prism.css' | prepend: site.baseurl }}" rel="stylesheet">
+  
 <body>
     <main class="{{ page.background }}">
     <article class="{{page.container}}">
@@ -22,4 +24,5 @@
         </span>
     </article>
     </main>
+    <script src="{{ '/assets/prism/prism.js' | prepend: site.baseurl }}"></script>
 </body>

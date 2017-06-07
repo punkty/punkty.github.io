@@ -23,7 +23,7 @@ image:
             Using fetch() is awesome! Which is supported by all browsers according to MDN except for Internet Explorer. But there is apparently a polyfill to make it work on the unsupported browsers. <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">Using Fetch</a> Below is the use of fetch() used in this project.
         </p>
         <pre>
-            <code>
+            <code class="language-javascript">
 const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
 // fetch the URL which will return a blob
 // The blob could be any kind of data type
@@ -38,7 +38,7 @@ fetch(endpoint).then(blob => blob.json().then(data => cities.push(...data)))
             One thing I did notice, if a capital is typed, it will change where ever that letter occurs to be capital. For example, if a capital "R" is typed. it will show up as New YoRk in the results. I believe this would require the regex and replace methods to be refactored a bit. Below is the whole javascript file.
         </p>
         <pre>
-            <code>
+            <code class="language-javascript">
 'use strict';
 
 const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';

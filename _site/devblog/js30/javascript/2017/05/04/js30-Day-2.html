@@ -1,19 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>JS 30 Day 2</title>
-  <meta name="description" content="A portfolio site and personal blog">
-
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="//cdn.rawgit.com/konpa/devicon/master/devicon.min.css">
-  <link rel="stylesheet" href="/assets/css/main.css">
-</head>
-
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link href="/assets/prism/prism.css" rel="stylesheet">
+  
 <body>
     <main class="devPostBG">
     <article class="blogContainer-Dev">
@@ -41,7 +30,7 @@
             Some other features I added was a ticking sound if you click anywhere in the window. Which can be turned off with an additional click. I added some numbers to the clock face that I am not too crazy about. I was going to figure out how to add some points to the end of each hadn to give it an arrow or something. If I come back to this project I will probably do that. I did change all of the hand's dimenions to be more readable. I guess I should also mention that all of the background images I am using are from a lovely site called <a href="#">unsplash.com</a>. Great free to use HD photos. Anyway, here is the javascript portion of the assignemnt.
         </p>
         <pre>
-            <code>
+            <code class="language-javascript">
 'use_strict';
 
 const secHand = document.querySelector('.secHand');
@@ -104,4 +93,5 @@ window.addEventListener('click', soundToggle);
         </span>
     </article>
     </main>
+    <script src="/assets/prism/prism.js"></script>
 </body>
